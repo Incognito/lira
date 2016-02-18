@@ -25,11 +25,8 @@ var buildOptions = getBuildOptions('build.json');
 var paths = {
   src: {
     base: 'src',
-    test: 'test'
-  },
-  build: {
-    cover: 'build/cover'
-  },
+    test: ['test/*.js']
+  }
 };
 
 // Library options
@@ -47,7 +44,7 @@ gulp.task('lint:main', function () {
 });
 
 gulp.task('test', function (done) {
-    return gulp.src('test.js', {read: false})
+    return gulp.src(paths.src.test, {read: false})
         // gulp-mocha needs filepaths so you can't have any plugins before it 
         .pipe(mocha({reporter: 'nyan'}));
 });

@@ -4,7 +4,7 @@
   "description": "Command line Jira interface",
   "main": "app.js",
   "scripts": {
-    "test": "make test"
+    "test": "gulp test"
   },
   "repository": {
     "type": "git",
@@ -22,7 +22,9 @@
   },
   "homepage": "https://github.com/incognito/lira#readme",
   "dependencies": {
-    "commander": "^2.9.0"
+    "commander": "^2.9.0",
+    "lodash": "^4.5.0",
+    "uri-templates": "^0.1.9"
   },
   "devDependencies": {
     "chai": "^3.5.0",
