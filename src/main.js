@@ -1,3 +1,4 @@
 'use strict';
 
-var EndpintManifest = require('./EndpointManifest');
+var request = require('request-promise');
+var JiraClient = require('./JiraClient')(request);

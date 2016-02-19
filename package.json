@@ -24,6 +24,7 @@
   "dependencies": {
     "commander": "^2.9.0",
     "lodash": "^4.5.0",
+    "request-promise": "^2.0.1",
     "uri-templates": "^0.1.9"
   },
   "devDependencies": {
