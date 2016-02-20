@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/incognito/lira#readme",
   "dependencies": {
+    "bluebird": "^3.3.1",
     "commander": "^2.9.0",
     "lodash": "^4.5.0",
     "request-promise": "^2.0.1",
@@ -33,6 +34,7 @@
     "gulp": "^3.9.1",
     "gulp-eslint": "^2.0.0",
     "gulp-mocha": "^2.2.0",
-    "mocha": "^2.4.5"
+    "mocha": "^2.4.5",
+    "mockery": "^1.4.0"
   }
 }
