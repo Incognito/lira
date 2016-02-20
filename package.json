@@ -25,6 +25,7 @@
     "bluebird": "^3.3.1",
     "commander": "^2.9.0",
     "lodash": "^4.5.0",
+    "nconf": "^0.8.4",
     "request-promise": "^2.0.1",
     "uri-templates": "^0.1.9"
   },
