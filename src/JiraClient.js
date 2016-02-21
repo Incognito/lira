@@ -13,7 +13,7 @@ module.exports = function(request) {
             IssueTransitions: uri('/rest/api/2/issue/{issueIdOrKey}/transitions'),
             IssueComment: uri('/rest/api/2/issue/{issueIdOrKey}/comment'),
             Issue: uri('/rest/api/2/issue/{issueIdOrKey}'), 
-            Project: uri('/rest/api/2/project'), // recent
+            Projects: uri('/rest/api/2/project'), // recent
             Search: uri('/rest/api/2/search'), // jql, startAt, maxResults
         },
         post: {

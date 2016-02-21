@@ -3,6 +3,7 @@
 // TODO: autocompletion https://nodejs.org/api/readline.html#readline_readline_createinterface_options
 // FIXME the actions of each command can go into a controller.
 var program = require('commander');
+var app = require ('../src/main.js');
 
 program
   .command('issue <id>')
@@ -13,15 +14,15 @@ program
   .option("-u, --upload <path>","Upload a file to a JIRA ID")
   .option("-a, --assign","Assign self to a JIRA")
   .action(function (options) {
+      /*
+      controller.newIssue()
+      controller.showIssue()
+      controller.postIssueComment()
+      controller.transitionIssue()
+      controller.uploadAttachmentToIssue()
+      controller.assignSelfToIssue()
+      */
       console.log("Not implemented");
-      // This needs a sub controller
-      // TODO JiraClient.getIssue(id)+getIssueComment(id)+getIssueTransitions(id);
-
-      // TODO create issue JiraClient.postIssue()
-      // TODO transition issue JiraClient.postIssueTransition(id)
-      // TODO comment JiraClient.postIssueComment(id);
-      // TODO attachment JiraClient.postIssueAttachment(id);
-      // TODO claim JIRA putIssueAssignee: uri('/rest/api/2/issue/{issueIdOrKey}/assignee'),
   });
 
 program
@@ -29,7 +30,7 @@ program
   .description('show issue information')
   .action(function (options) {
       console.log("Not implemented");
-      // TODO JiraClient.getBoardData
+      //controller.showBoard
   });
 
 program
@@ -39,16 +40,16 @@ program
   .option("-n, --number","limit results to n-items")
   .action(function (options) {
       console.log("Not implemented");
-      // TODO getSearch: // params: jql, startAt, maxResults
+      // controller.jqlSearch
   });
 
 program
-  .command('Project <id>')
-  .description('show project information')
+  .command('Projects')
+  .description('show projects available to you')
   .option("-r, --recent","Show recent projects")
   .action(function (options) {
       console.log("Not implemented");
-      // TODO getProject // params: recent
+      // controller.showProjects
   });
 
 program
@@ -56,7 +57,7 @@ program
   .description('show results from a saved filter')
   .action(function (options) {
       console.log("Not implemented");
-      // TODO getFilter
+      // controller.showFilter
   });
 
 
