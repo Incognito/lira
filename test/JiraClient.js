@@ -7,7 +7,6 @@ var bluebird = require('bluebird');
 
 var JiraClient = require('../src/JiraClient')(require('request-promise'));
 
-
 describe('JiraClient', function(){
     before(function (done) {
 
@@ -18,17 +17,17 @@ describe('JiraClient', function(){
         });
 
         var responsePromise = function (request) {
-            var encodedRequestPath = new Buffer(request).toString('base64');
-            var response = fs.readFileSync(__dirname + '/data/' + encodedRequestPath, 'utf8');
-            return bluebird.resolve(response.trim());
+            var encodedRequestPath = new Buffer(request.uri).toString('base64');
+            var fileContent = fs.readFileSync(__dirname + '/data/' + encodedRequestPath, 'utf8');
+            var response = JSON.parse(fileContent);
+            response.body = JSON.parse(response.body);
+            if (response.statusCode >= 400) {
+                return bluebird.reject(response);
+            }
+            return bluebird.resolve(response);
         };
 
-        mockery.registerMock('request-promise', {
-            get: responsePromise,
-            post: responsePromise,
-            put: responsePromise
-        })
-
+        mockery.registerMock('request-promise', responsePromise)
 
         done();
     });
@@ -48,8 +47,8 @@ describe('JiraClient', function(){
     it('should accept arguments as named substitutions',function(done){
         var JiraClient = require('../src/JiraClient')(require('request-promise'));
         // aHR0cHM6Ly9leGFtcGxlLmNvbS9yZXN0L2FwaS8yL2JvYXJkLzEvZGF0YQ==
-        var request = JiraClient.getBoardData({boardId: 1}).then(function(message){
-            assert.equal(message, '{}');
+        JiraClient.getBoardData({boardId: 1}).then(function(message){
+            assert.equal(JSON.stringify(message.body), JSON.stringify({}));
             done()
         },
         function(message){

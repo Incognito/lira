@@ -36,11 +36,18 @@ module.exports = function(request) {
                 var host = "https://example.com";
                 var route = uri.fill(params);
 
-                if (method === "get" || method === "head") {
-                    return request[method](host + route);
+                var options = {
+                    resolveWithFullResponse: true,
+                    method: method,
+                    uri: host + route,
+                    json: true
+                };
+
+                if (method !== "get") {
+                    options[data] = data;
                 }
 
-                return request[method](host + route, data);
+                return request(options);
             };
         });
     });

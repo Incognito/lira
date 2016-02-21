@@ -1,1 +1,8 @@
-{}
+{
+  "statusCode": 200,
+  "body": "{}",
+  "headers": {
+     "content-type": "application/json"
+  },
+  "request": {}
+}
