@@ -47,7 +47,10 @@ module.exports = function(request) {
                     options[data] = data;
                 }
 
-                return request(options);
+                return request(options).catch(function(message){
+                    // If I don't have a catch here, request-promise decides
+                    // to throw an error.
+                });;
             };
         });
     });
